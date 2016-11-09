@@ -15,7 +15,7 @@ $base: #E44025;
   height: 300px;  
   border-radius: 50%;
   border: 16px solid $base;
-  // @see http://lea.verou.me/css3patterns/
+  /* @see http://lea.verou.me/css3patterns/*/
   /* border: 16px solid transparent;
   background:
     radial-gradient(#FFA767 15%, transparent 16%) 0 0,
@@ -37,6 +37,8 @@ $base: #E44025;
   border-radius: inherit;
   background-clip: padding-box;
   background-color: #ffcb3f;
+  -webkit-transition: all 6s ease;
+    transition: all 6s ease;
 }
 .gb-turntable-container canvas{
   width: inherit;
@@ -69,7 +71,8 @@ $base: #E44025;
   margin: 0 auto;
   text-align: center; 
   -webkit-transform-origin: 50% 150px; 
-  transform-origin: 50% 150px;
+  -ms-transform-origin: 50% 150px; 
+      transform-origin: 50% 150px;
 }
 
 .gb-turntable-btn{

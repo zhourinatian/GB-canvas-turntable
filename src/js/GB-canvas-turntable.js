@@ -15,6 +15,7 @@
       num,
       prizes,
       btn,
+      deg = 0,
       fnGetPrize,
       fnGotBack,
       optsPrize;
@@ -175,11 +176,11 @@
    * [初始化转盘]
    * @return {[type]} [description]
    */
-  function runInit() {
+/*  function runInit() {
     removeClass(container, 'gb-run');
     container.style[transform] = 'rotate(0deg)';
     container.style[transform] = '';
-  }
+  }*/
 
   /**
    * 旋转转盘
@@ -187,12 +188,12 @@
    * @return {[type]}     [description]
    */
   function runRotate(deg){
-    runInit();
+    // runInit();
 
-    setTimeout(function() {
-      addClass(container, 'gb-run');
+    // setTimeout(function() {
+    // addClass(container, 'gb-run');
       container.style[transform] = 'rotate('+ deg +'deg)';
-    }, 10);
+    // }, 10);
   }
 
   /**
@@ -201,8 +202,8 @@
    */
   function events() {
     bind(btn, 'click', function() {
-      var prizeId,
-          chances;
+/*      var prizeId,
+          chances;*/
 
       addClass(btn, 'disabled');
 
@@ -211,7 +212,10 @@
           prizeId: data[0],
           chances: data[1]
         }
-        runRotate(360 * 10 - data[0] * (360 / num));
+        // 计算旋转角度
+        deg = deg || 0;
+        deg = deg + (360 - deg % 360) + (360 * 10 - data[0] * (360 / num))
+        runRotate(deg);
       });
 
       // 中奖提示
@@ -245,13 +249,13 @@
    * @param {Event}     event  Event to detach 
    * @param {Function}  fn     Callback function 
   */
-  function unbind(ele, event, fn) {
+/*  function unbind(ele, event, fn) {
       if (typeof removeEventListener === 'function') {
           ele.removeEventListener(event, fn, false);
       } else if (ele.detachEvent) {
           ele.detach('on' + event, fn);
       }
-  }
+  }*/
 
   /**
    * hasClass
