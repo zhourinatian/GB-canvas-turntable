@@ -34,7 +34,7 @@
 
   // 嗅探特性
   Object.keys(vendors).some(function(vendor) {
-    if (testEle.style[vendor + 'TransitionProperty'] !== undefined) {
+    if (testEle.style[vendor + (vendor ? 'T' : 't') + 'ransitionProperty'] !== undefined) {
       cssPrefix = vendor ? '-' + vendor.toLowerCase() + '-' : '';
       eventPrefix = vendors[vendor];
       return true;
