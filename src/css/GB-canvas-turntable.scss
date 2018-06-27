@@ -12,7 +12,7 @@ $base: #E44025;
 .gb-turntable{
   position: relative;
   width: 300px;
-  height: 300px;  
+  height: 300px;
   border-radius: 50%;
   border: 16px solid $base;
   /* @see http://lea.verou.me/css3patterns/*/
@@ -69,10 +69,14 @@ $base: #E44025;
   padding-top: 20px;
   /* width: 50px; */
   margin: 0 auto;
-  text-align: center; 
-  -webkit-transform-origin: 50% 150px; 
-  -ms-transform-origin: 50% 150px; 
+  text-align: center;
+  -webkit-transform-origin: 50% 150px;
+  -ms-transform-origin: 50% 150px;
       transform-origin: 50% 150px;
+}
+.gb-turntable-item img {
+  width: 50px;
+  height: 50px;;
 }
 
 .gb-turntable-btn{
@@ -104,7 +108,7 @@ $base: #E44025;
   border-width: 30px;
   border-style: solid;
   border-color: transparent;
-  border-bottom-color: $base; 
+  border-bottom-color: $base;
 }
 .gb-turntable-btn.disabled{
     pointer-events: none;
@@ -116,7 +120,7 @@ $base: #E44025;
 }
 
 
-.gb-run{ 
+.gb-run{
     -webkit-transition: all 6s ease;
     transition: all 6s ease;
 }

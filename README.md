@@ -21,7 +21,23 @@
         id: 'turntable',
         config: function(callback){
             // 获取奖品信息
-            callback && callback(['1元红包','2元红包','3元红包','4元红包','5元红包','6元红包']);    
+            // 奖项 text 属性不能为空，用于显示或抽中奖品提示
+            // img 为奖品图片地址，如果不为空则转盘奖品按图片方式显示
+            callback && callback([{
+              text: '1元红包',
+              img: 'images/redpacket.png'
+            }, {
+              text: '2元红包'
+            }, {
+              text: '3元红包'
+            }, {
+              text: '显示器',
+              img: 'images/display.png'
+            }, {
+              text: '5元红宝'
+            }, {
+              text: '6元红宝'
+            }])
         },
         getPrize: function(callback) {
             // 获取中奖信息

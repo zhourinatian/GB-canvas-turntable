@@ -1,24 +1,24 @@
 /**
-* GB-canvas-turntable.js
-* @class gbTurntable
-* @see https://github.com/givebest/GB-canvas-turntable
-* @author givenlovs@msn.com
-* @(c) 2016
-**/
+ * GB-canvas-turntable.js
+ * @class gbTurntable
+ * @see https://github.com/givebest/GB-canvas-turntable
+ * @author givenlovs@msn.com
+ * @(c) 2016
+ **/
 
 
-(function() {
+(function () {
   var $,
-      ele,
-      container,
-      canvas,
-      num,
-      prizes,
-      btn,
-      deg = 0,
-      fnGetPrize,
-      fnGotBack,
-      optsPrize;
+    ele,
+    container,
+    canvas,
+    num,
+    prizes,
+    btn,
+    deg = 0,
+    fnGetPrize,
+    fnGotBack,
+    optsPrize;
 
   var cssPrefix,
     eventPrefix,
@@ -33,7 +33,7 @@
     cssSupport = {};
 
   // 嗅探特性
-  Object.keys(vendors).some(function(vendor) {
+  Object.keys(vendors).some(function (vendor) {
     if (testEle.style[vendor + (vendor ? 'T' : 't') + 'ransitionProperty'] !== undefined) {
       cssPrefix = vendor ? '-' + vendor.toLowerCase() + '-' : '';
       eventPrefix = vendors[vendor];
@@ -76,38 +76,38 @@
     fnGetPrize = opts.getPrize;
     fnGotBack = opts.gotBack;
 
-    opts.config(function(data) {
+    opts.config(function (data) {
       prizes = opts.prizes = data;
       num = prizes.length;
       draw(opts);
     });
-    
+
     events();
   }
 
   /**
    * @param  {String} id
    * @return {Object} HTML element
-  */
-  $ = function(id) {
-      return document.getElementById(id);
+   */
+  $ = function (id) {
+    return document.getElementById(id);
   };
 
   /**
    * [绘制转盘]
    * @param  {String} id
-  * @param  {Number} 奖品份数
+   * @param  {Number} 奖品份数
    */
   function draw(opts) {
     opts = opts || {};
-    if (!opts.id || num >>> 0 === 0) return; 
+    if (!opts.id || num >>> 0 === 0) return;
 
     var id = opts.id,
-        rotateDeg = 360 / num / 2 + 90,  // 扇形回转角度
-        ctx,  
-        prizeItems = document.createElement('ul'), // 奖项容器
-        turnNum = 1 / num,  // 文字旋转 turn 值
-        html = [];  // 奖项
+      rotateDeg = 360 / num / 2 + 90, // 扇形回转角度
+      ctx,
+      prizeItems = document.createElement('ul'), // 奖项容器
+      turnNum = 1 / num, // 文字旋转 turn 值
+      html = []; // 奖项
 
     ele = $(id);
     canvas = ele.querySelector('.gb-turntable-canvas');
@@ -131,15 +131,15 @@
       // 从(0, 0)坐标开始定义一条新的子路径
       ctx.moveTo(0, 0);
       // 旋转弧度,需将角度转换为弧度,使用 degrees * Math.PI/180 公式进行计算。
-      ctx.rotate((360 / num * i - rotateDeg) * Math.PI/180);
+      ctx.rotate((360 / num * i - rotateDeg) * Math.PI / 180);
       // 绘制圆弧
-      ctx.arc(0, 0, 150, 0,  2 * Math.PI / num, false);
+      ctx.arc(0, 0, 150, 0, 2 * Math.PI / num, false);
 
       // 颜色间隔
       if (i % 2 == 0) {
-          ctx.fillStyle = '#ffb820';
-      }else{
-          ctx.fillStyle = '#ffcb3f';
+        ctx.fillStyle = '#ffb820';
+      } else {
+        ctx.fillStyle = '#ffcb3f';
       }
 
       // 填充扇形
@@ -153,8 +153,12 @@
       ctx.restore();
 
       // 奖项列表
-      html.push('<li class="gb-turntable-item"> <span style="' + transform + ': rotate(' + i * turnNum + 'turn)">' + opts.prizes[i] + '</span> </li>');
-      if ((i+1) === num) {
+      var prizeList = opts.prizes;
+      html.push('<li class="gb-turntable-item"> <span style="');
+      html.push(transform + ': rotate(' + i * turnNum + 'turn)">');
+      !!prizeList[i].img ? html.push('<img src="' + prizeList[i].img + '" />') : html.push(prizeList[i].text)
+      html.push('</span> </li>');
+      if ((i + 1) === num) {
         prizeItems.className = 'gb-turntalbe-list';
         container.appendChild(prizeItems);
         prizeItems.innerHTML = html.join('');
@@ -168,7 +172,7 @@
    * [提示]
    * @param  {String} msg [description]
    */
-  function showMsg(msg){
+  function showMsg(msg) {
     alert(msg);
   }
 
@@ -176,23 +180,23 @@
    * [初始化转盘]
    * @return {[type]} [description]
    */
-/*  function runInit() {
-    removeClass(container, 'gb-run');
-    container.style[transform] = 'rotate(0deg)';
-    container.style[transform] = '';
-  }*/
+  /*  function runInit() {
+      removeClass(container, 'gb-run');
+      container.style[transform] = 'rotate(0deg)';
+      container.style[transform] = '';
+    }*/
 
   /**
    * 旋转转盘
    * @param  {[type]} deg [description]
    * @return {[type]}     [description]
    */
-  function runRotate(deg){
+  function runRotate(deg) {
     // runInit();
 
     // setTimeout(function() {
     // addClass(container, 'gb-run');
-      container.style[transform] = 'rotate('+ deg +'deg)';
+    container.style[transform] = 'rotate(' + deg + 'deg)';
     // }, 10);
   }
 
@@ -201,13 +205,13 @@
    * @return {[type]} [description]
    */
   function events() {
-    bind(btn, 'click', function() {
-/*      var prizeId,
-          chances;*/
+    bind(btn, 'click', function () {
+      /*      var prizeId,
+                chances;*/
 
       addClass(btn, 'disabled');
 
-      fnGetPrize(function(data) {
+      fnGetPrize(function (data) {
         optsPrize = {
           prizeId: data[0],
           chances: data[1]
@@ -224,49 +228,49 @@
   }
 
   function eGot() {
-      if (optsPrize.chances) removeClass(btn, 'disabled');  
-      fnGotBack(prizes[optsPrize.prizeId]);
+    if (optsPrize.chances) removeClass(btn, 'disabled');
+    fnGotBack(prizes[optsPrize.prizeId].text);
   }
 
 
   /**
-   * Bind events to elements 
+   * Bind events to elements
    * @param {Object}    ele    HTML Object
-   * @param {Event}     event  Event to detach 
-   * @param {Function}  fn     Callback function 
-  */
+   * @param {Event}     event  Event to detach
+   * @param {Function}  fn     Callback function
+   */
   function bind(ele, event, fn) {
-      if (typeof addEventListener === 'function') {
-          ele.addEventListener(event, fn, false);
-      }  else if (ele.attachEvent) {
-          ele.attachEvent('on' + event, fn);   
-      }  
+    if (typeof addEventListener === 'function') {
+      ele.addEventListener(event, fn, false);
+    } else if (ele.attachEvent) {
+      ele.attachEvent('on' + event, fn);
+    }
   }
 
   /**
    * Unbind events to elements
    * @param {Object}    ele    HTML Object
-   * @param {Event}     event  Event to detach 
-   * @param {Function}  fn     Callback function 
-  */
-/*  function unbind(ele, event, fn) {
-      if (typeof removeEventListener === 'function') {
-          ele.removeEventListener(event, fn, false);
-      } else if (ele.detachEvent) {
-          ele.detach('on' + event, fn);
-      }
-  }*/
+   * @param {Event}     event  Event to detach
+   * @param {Function}  fn     Callback function
+   */
+  /*  function unbind(ele, event, fn) {
+        if (typeof removeEventListener === 'function') {
+            ele.removeEventListener(event, fn, false);
+        } else if (ele.detachEvent) {
+            ele.detach('on' + event, fn);
+        }
+    }*/
 
   /**
    * hasClass
    * @param {Object} ele   HTML Object
    * @param {String} cls   className
    * @return {Boolean}
-  */
+   */
   function hasClass(ele, cls) {
     if (!ele || !cls) return false;
     if (ele.classList) {
-      return ele.classList.contains(cls);  
+      return ele.classList.contains(cls);
     } else {
       return ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
     }
@@ -277,7 +281,7 @@
     if (ele.classList) {
       ele.classList.add(cls);
     } else {
-      if (!hasClass(ele, cls)) ele.className += '' + cls; 
+      if (!hasClass(ele, cls)) ele.className += '' + cls;
     }
   }
 
@@ -291,7 +295,7 @@
   }
 
   var gbTurntable = {
-    init: function(opts) {
+    init: function (opts) {
       return init(opts);
     }
   }
@@ -299,11 +303,11 @@
   // (@see https://github.com/madrobby/zepto/blob/master/src/zepto.js)
   window.gbTurntable === undefined && (window.gbTurntable = gbTurntable);
 
-    // AMD (@see https://github.com/jashkenas/underscore/blob/master/underscore.js)
-    if (typeof define == 'function' && define.amd) {
-      define('GB-canvas-turntable', [], function() {
-        return gbTurntable;
-      });
-    }
+  // AMD (@see https://github.com/jashkenas/underscore/blob/master/underscore.js)
+  if (typeof define == 'function' && define.amd) {
+    define('GB-canvas-turntable', [], function () {
+      return gbTurntable;
+    });
+  }
 
 }());
