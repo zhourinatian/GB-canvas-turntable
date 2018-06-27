@@ -10,13 +10,14 @@
 
 ### Browser
 	
+```html
 	<link rel="stylesheet" href="css/GB-canvas-turntable.css">
 	<script src="js/GB-canvas-turntable.js"></script>
-
+```
 
 ### 普通
 
-
+```js
 	gbTurntable.init({
         id: 'turntable',
         config: function(callback){
@@ -49,6 +50,7 @@
             alert('恭喜抽中' + data);
         }
     });
+```
 
 
 
