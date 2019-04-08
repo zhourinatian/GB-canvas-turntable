@@ -66,6 +66,6 @@
 
 ## License
 
-[MIT](./LICENSE) © 2016 [givebest](https://github.com/givebest)
+[MIT & Anti 996](./LICENSE) © 2019 [givebest](https://github.com/givebest)
 
  
