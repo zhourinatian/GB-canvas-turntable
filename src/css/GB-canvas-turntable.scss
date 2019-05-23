@@ -37,8 +37,8 @@ $base: #E44025;
   border-radius: inherit;
   background-clip: padding-box;
   background-color: #ffcb3f;
-  -webkit-transition: all 6s ease;
-    transition: all 6s ease;
+  -webkit-transition: transform 6s ease;
+    transition: transform 6s ease;
 }
 .gb-turntable-container canvas{
   width: inherit;

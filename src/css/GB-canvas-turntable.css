@@ -2,8 +2,7 @@
 .gb-turntable li {
   margin: 0;
   padding: 0;
-  list-style: none;
-}
+  list-style: none; }
 
 .gb-turntable {
   position: relative;
@@ -20,8 +19,7 @@
     radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
     background-color:#E44025;
     background-size:16px 16px; */
-  box-shadow: 0 2px 3px #333, 0 0 2px #000;
-}
+  box-shadow: 0 2px 3px #333, 0 0 2px #000; }
 
 .gb-turntable-container {
   position: absolute;
@@ -33,15 +31,13 @@
   border-radius: inherit;
   background-clip: padding-box;
   background-color: #ffcb3f;
-  -webkit-transition: all 6s ease;
-  transition: all 6s ease;
-}
+  -webkit-transition: transform 6s ease;
+  transition: transform 6s ease; }
 
 .gb-turntable-container canvas {
   width: inherit;
   height: inherit;
-  border-radius: 50%;
-}
+  border-radius: 50%; }
 
 .gb-turntalbe-list {
   position: absolute;
@@ -49,8 +45,7 @@
   top: 0;
   width: inherit;
   height: inherit;
-  z-index: 2;
-}
+  z-index: 2; }
 
 .gb-turntable-item {
   position: absolute;
@@ -60,8 +55,7 @@
   height: 100%;
   color: #e4370e;
   font-weight: bold;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
-}
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6); }
 
 .gb-turntable-item span {
   position: relative;
@@ -72,13 +66,11 @@
   text-align: center;
   -webkit-transform-origin: 50% 150px;
   -ms-transform-origin: 50% 150px;
-  transform-origin: 50% 150px;
-}
+  transform-origin: 50% 150px; }
 
 .gb-turntable-item img {
   width: 50px;
-  height: 50px;
-}
+  height: 50px; }
 
 .gb-turntable-btn {
   position: absolute;
@@ -95,8 +87,7 @@
   font-size: 20px;
   text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.6);
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
-  text-decoration: none;
-}
+  text-decoration: none; }
 
 .gb-turntable-btn::after {
   position: absolute;
@@ -110,20 +101,18 @@
   border-width: 30px;
   border-style: solid;
   border-color: transparent;
-  border-bottom-color: #E44025;
-}
+  border-bottom-color: #E44025; }
 
 .gb-turntable-btn.disabled {
   pointer-events: none;
   background: #B07A7B;
-  color: #ccc;
-}
+  color: #ccc; }
 
 .gb-turntable-btn.disabled::after {
-  border-bottom-color: #B07A7B;
-}
+  border-bottom-color: #B07A7B; }
 
 .gb-run {
   -webkit-transition: all 6s ease;
-  transition: all 6s ease;
-}
+  transition: all 6s ease; }
+
+/*# sourceMappingURL=GB-canvas-turntable.css.map */
