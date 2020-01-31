@@ -101,7 +101,58 @@ gbTurntable.init({
 
   <script src="js/GB-canvas-turntable.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+
+      var strPrizeNames = "积分奖（10分）,积分奖（10分）,积分奖（10分）,积分奖（10分）,积分奖（10分）";
+      var arr = strPrizeNames.split(',');
+      var prizeNames = [积分奖（10分）];
+      var ifail = -1;
+      for (var i = 0; i < arr.length; i++) {
+          prizeNames.push({ text: arr[i] });
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+          gbTurntable.init({
+              id: 'turntable',
+              config: function (callback) {
+                  // 获取奖品信息
+                  //                  callback && callback(['11元红包', '2元红包', '3元红包', '4元红包', '5元红包', '6元红包']);
+                  callback && callback(prizeNames);
+                  //                  callback && callback([{
+                  //                      text: '一等奖',
+                  //                      img: '/Content/tunnelprize/images/1.png'
+                  //                  }, {
+                  //                      text: '二等奖',
+                  //                      img: '/Content/tunnelprize/images/2.png'
+                  //                  }, {
+                  //                      text: '三等奖',
+                  //                      img: '/Content/tunnelprize/images/3.png'
+                  //                  }, {
+                  //                      text: '谢谢参与',
+                  //                      img: '/Content/tunnelprize/images/4.png'
+                  //                  }])
+              },
+              getPrize: function (callback) {
+                  // 获取中奖信息
+                  var num = 0, //奖品ID
+            chances = 10; // 可抽奖次数
+                  $.post("/PrizeSet/StartPrize", { prizeid: 10 }, function (result) {
+                      num = result.id;
+                      callback && callback([num, chances]);
+                  });
+
+              },
+              gotBack: function (data) {
+                  if (data == "谢谢参与")
+                      alert("谢谢参与");
+                else
+                  alert('恭喜抽中' + data);
+              }
+          });
+      }, false);
+//      $(document).ready(function () {
+//          $("#marquee").marquee();
+//      });
+  
+    /*    document.addEventListener('DOMContentLoaded', function () {
       gbTurntable.init({
         id: 'turntable',
         config: function (callback) {
@@ -134,7 +185,7 @@ gbTurntable.init({
         }
       });
     }, false);
-
+*/
   </script>
 </body>
 
